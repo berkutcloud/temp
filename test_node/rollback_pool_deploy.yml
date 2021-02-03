@@ -3,7 +3,8 @@
   hosts: ip-10-0-0-78.us-west-1.compute.internal
   connection: local
   gather_facts: false
-
+  vars_files: web_app.yml
+  
   tasks:
     - name: Setting up provider values
       set_fact:
