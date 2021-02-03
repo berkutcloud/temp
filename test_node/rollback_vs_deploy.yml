@@ -22,7 +22,7 @@
     - name: DELETE POOL
       bigip_pool:
         provider: "{{provider}}"
-        name: "http_pool"
+        name: "POOL_{{ website }}_{{ vip_port }}"
         state: absent
   
     - name: DELETE NODES
