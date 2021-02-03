@@ -28,7 +28,7 @@
         name: "{{ item.name }}"
         port: "{{ item.port }}"
         description: "Web Server for {{ website }}"
-        provider: "{{ conn_parameters }}"
+        provider: "{{ provider }}"
       loop: "{{ pool_members }}"
       tags: new_pool
 
