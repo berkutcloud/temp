@@ -18,7 +18,7 @@
         name: "POOL_{{ website }}_{{ vip_port }}"
         lb_method: round-robin
         state: present
-        provider: "{{ conn_parameters }}"
+        provider: "{{ provider }}"
 
     - name: ADD POOL MEMBERS
       bigip_pool_member:
