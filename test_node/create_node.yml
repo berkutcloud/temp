@@ -3,7 +3,8 @@
   hosts: ip-10-0-0-78.us-west-1.compute.internal
   connection: local
   gather_facts: false
-
+  vars_files: web_app.yml
+  
   tasks:
     - name: Setting up provider values
       set_fact:
@@ -14,9 +15,11 @@
   
     - name: CREATE NODES
       bigip_node:
-        provider: "{{provider}}"
-        host: "{{hostvars[item].ansible_host}}"
-        name: "{{hostvars[item].inventory_hostname}}"
-      loop: "{{ groups['web'] }}"
+       address: "{{ item.ip }}"
+        name: "{{ item.name }}"
+        provider: "{{ provider }}"
+        state: present
+      loop: "{{ pool_members }}"
+
 
   
