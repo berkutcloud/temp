@@ -13,13 +13,12 @@
         server_port: "443"
         validate_certs: "False"
   
-    - name: CREATE POOL
+    - name: Create New LB Pool
       bigip_pool:
-        provider: "{{provider}}"
-        name: "http_pool"
-        lb_method: "round-robin"
-        monitors: "/Common/http"
-        monitor_type: "and_list"
+        name: "POOL_{{ website }}_{{ vip_port }}"
+        lb_method: round-robin
+        state: present
+        provider: "{{ conn_parameters }}"
 
     - name: ADD POOL MEMBERS
       bigip_pool_member:
