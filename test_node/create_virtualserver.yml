@@ -27,7 +27,7 @@
           - name: serverssl
             context: server-side
         state: present
-        provider: "{{ conn_parameters }}"
+        provider: "{{ provider }}"
       tags: vip
 
 
