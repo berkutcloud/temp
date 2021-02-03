@@ -1,0 +1,36 @@
+---
+- name: BIG-IP SETUP
+  hosts: ip-10-0-0-78.us-west-1.compute.internal
+  connection: local
+  gather_facts: false
+  vars_files: web_app.yml
+  
+  tasks:
+    - name: Setting up provider values
+      set_fact:
+       provider:
+        server: "{{ ansible_host }}"
+        server_port: "443"
+        validate_certs: "False"
+
+    - name: Create Virtual Server  
+      bigip_virtual_server:
+        name: "{{ website }}_{{ vip_port }}_VS"
+        destination: "{{ vip }}"
+        port: "{{ vip_port}}"
+        pool: "POOL_{{ website }}_{{ vip_port }}"
+        description: "VIP for {{ website }}"
+        profiles:
+          - http
+          - name: clientssl
+            context: client-side
+          - name: serverssl
+            context: server-side
+        state: present
+        provider: "{{ conn_parameters }}"
+      tags: vip
+
+
+    - name: PRINT OUT WEB VIP FOR F5
+      debug:
+        msg: "The VIP (Virtual IP) is https://{{ansible_host}}"

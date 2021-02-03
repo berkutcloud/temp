@@ -1,0 +1,31 @@
+---
+- name: GRAB F5 FACTS
+  hosts: ip-10-0-0-78.us-west-1.compute.internal
+  connection: local
+  gather_facts: false
+
+  collections:
+    - f5networks.f5_modules
+
+  tasks:
+    - name: COLLECT BIG-IP FACTS
+      bigip_device_info:
+        gather_subset:
+          - system-info
+        provider:
+          server: "{{ansible_host}}"
+          server_port: 443
+          validate_certs: false
+      register: device_facts
+
+    - name: DISPLAY COMPLETE BIG-IP SYSTEM INFORMATION
+      debug:
+        var: device_facts
+
+    - name: DISPLAY ONLY THE MAC ADDRESS
+      debug:
+        var: device_facts['system_info']['base_mac_address']
+
+    - name: DISPLAY ONLY THE VERSION
+      debug:
+        var: device_facts['system_info']['product_version']
