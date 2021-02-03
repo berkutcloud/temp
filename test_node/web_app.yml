@@ -1,0 +1,11 @@
+---
+website: dev.testnetwork.net
+vip: 192.168.20.50
+vip_port: 80
+pool_members:
+  - ip: 192.168.10.10
+    name: "dev01.testnetwork.net"
+    port: 80
+  - ip: 192.168.10.20
+    name: "dev02.testnetwork.net"
+    port: 80

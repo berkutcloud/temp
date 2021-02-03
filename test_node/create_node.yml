@@ -16,9 +16,9 @@
     - name: CREATE NODES
       bigip_node:
        address: "{{ item.ip }}"
-        name: "{{ item.name }}"
-        provider: "{{ provider }}"
-        state: present
+       name: "{{ item.name }}"
+       provider: "{{ provider }}"
+       state: present
       loop: "{{ pool_members }}"
 
 
