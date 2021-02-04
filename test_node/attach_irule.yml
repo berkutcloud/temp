@@ -27,3 +27,5 @@
         irules: "irule1"
         destination: "{{ vip }}"
         port: "{{ vip_port}}"
+        profiles:
+          - http
