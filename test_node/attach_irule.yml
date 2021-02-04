@@ -25,3 +25,5 @@
         provider: "{{provider}}"
         name: "{{ website }}_{{ vip_port }}_VS"
         irules: "irule1"
+        destination: "{{ vip }}"
+        port: "{{ vip_port}}"
