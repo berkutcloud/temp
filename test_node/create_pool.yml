@@ -17,6 +17,8 @@
       bigip_pool:
         name: "POOL_{{ website }}_{{ vip_port }}"
         lb_method: round-robin
+        monitors:
+          - http
         state: present
         provider: "{{ provider }}"
 
