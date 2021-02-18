@@ -18,6 +18,8 @@
        address: "{{ item.ip }}"
        name: "{{ item.name }}"
        provider: "{{ provider }}"
+       monitors:
+        - /Common/http
        state: present
       loop: "{{ pool_members }}"
 
