@@ -1,5 +1,6 @@
-- hosts: webserver1
+- hosts: webservers
    - name: Confirm that 200 OK response is returned
        uri:
-        url: "http://{{ ansible_host }}/"
-        status_code: 200 OK
+        url: "http://{{ item.ip }}/"
+        status_code: 200
+     loop: "{{ pool_members }}"
