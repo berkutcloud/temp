@@ -10,7 +10,7 @@
       set_fact:
        provider:
         server: "{{ansible_host}}"
-        server_port: "443"
+        server_port: "8443"
         validate_certs: "False"
   
     - name: CREATE NODES
