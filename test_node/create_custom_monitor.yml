@@ -1,0 +1,28 @@
+---
+- name: BIG-IP SETUP
+  hosts: ltm01
+  connection: local
+  gather_facts: false
+  vars_files: web_app.yml
+  
+  tasks:
+    - name: Setting up provider values
+      set_fact:
+       provider:
+        server: "{{ansible_host}}"
+        server_port: "443"
+        validate_certs: "False"
+  
+    - name: create-custom-http-monitor
+      bigip_monitor_http:
+        name: "my_http_monitor"
+        send: "GET /\r\n"
+        receive: "200 OK"
+        validate_certs: "false"
+        state: present
+        provider: "{{ provider }}"
+...
+
+
+
+  
