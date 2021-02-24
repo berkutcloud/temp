@@ -18,7 +18,6 @@
         name: "my_http_monitor"
         send: "GET /\r\n"
         receive: "200 OK"
-        validate_certs: "false"
         state: present
         provider: "{{ provider }}"
 ...
