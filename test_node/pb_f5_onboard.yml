@@ -1,0 +1,39 @@
+---
+# - name: debug
+#   hosts: ltm01
+#   connection: local
+#   tags: never,debug
+#   tasks:
+#     - debug:
+#         msg: " IP: {{item.dst.split('/')[0]}} mask: {{ item.dst | ipv4('netmask') }}"
+#       with_items: "{{ routes }}"
+
+- name: Onboarding a New LTM
+  hosts: ltm01
+  connection: local
+    - name: "Configure System Parameters"
+      import_tasks: "f5_system.yml"
+      tags: system
+
+    - name: "Configure Interfaces"
+      import_tasks: "f5_interfaces.yml"
+      tags: intfs
+
+
+    # - bigip_device_facts:
+    #     gather_subset: all
+    #     provider:
+    #         user: admin
+    #         password: admin
+    #         server: "{{ ansible_host }}"
+    #         validate_certs: no
+
+    # - bigip_device_ntp:
+    #     ntp_servers:
+    #       - 172.20.1.33
+    #     provider:
+    #         user: admin
+    #         password: admin
+    #         server: "{{ ansible_host }}"
+    #         validate_certs: no
+        
