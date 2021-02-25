@@ -1,4 +1,8 @@
-- hosts: webserver1
+---
+- name: verify webserver is working
+  hosts: webserver1
+  
+  tasks:
     - name: Confirm that 200 OK response is returned
       uri:
         url: "http://10.0.2.12"
