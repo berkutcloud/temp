@@ -1,6 +1,6 @@
 ---
 - name: verify webserver is working
-  hosts: webserver1
+  hosts: web1
   
   tasks:
     - name: Confirm that 200 OK response is returned
