@@ -1,0 +1,6 @@
+- hosts: webserver1
+    - name: Confirm that 200 OK response is returned
+      uri:
+        url: "http://10.0.2.12"
+        status_code: 200
+    
