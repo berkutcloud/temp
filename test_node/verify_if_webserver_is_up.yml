@@ -1,6 +1,6 @@
 - hosts: webservers
-   - name: Confirm that 200 OK response is returned
+    - name: Confirm that 200 OK response is returned
        uri:
         url: "http://{{ item.ip }}/"
         status_code: 200
-     loop: "{{ pool_members }}"
+      loop: "{{ pool_members }}"
