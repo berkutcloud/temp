@@ -1,0 +1,10 @@
+---
+- name: verify webserver is working
+  hosts: web2
+  
+  tasks:
+    - name: Confirm that 200 OK response is returned
+      uri:
+        url: "http://{ansible_host}"
+        status_code: 200
+    
