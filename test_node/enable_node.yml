@@ -18,5 +18,5 @@
        address: "{{ item.ip }}"
        name: "{{ item.name }}"
        provider: "{{ provider }}"
-       state: disabled
+       state: "enabled"
       loop: "{{ pool_members }}"
