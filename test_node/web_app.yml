@@ -3,9 +3,9 @@ website: dev.testnetwork.net
 vip: 10.0.1.201
 vip_port: 80
 pool_members:
-  - ip: 10.0.2.218
+  - ip: 10.0.2.12
     name: "dev01.testnetwork.net"
     port: 80
-  - ip: 10.0.2.181
+  - ip: 10.0.2.13
     name: "dev02.testnetwork.net"
     port: 80
