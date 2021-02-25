@@ -18,8 +18,6 @@
        address: "{{ item.ip }}"
        name: "{{ item.name }}"
        provider: "{{ provider }}"
-       monitors:
-          - my_http_monitor
        state: present
       loop: "{{ pool_members }}"
 

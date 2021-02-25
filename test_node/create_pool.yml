@@ -18,7 +18,7 @@
         name: "POOL_{{ website }}_{{ vip_port }}"
         lb_method: round-robin
         monitors:
-          - http
+          - my_http_monitor
         state: present
         provider: "{{ provider }}"
 
