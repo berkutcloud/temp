@@ -5,6 +5,6 @@
   tasks:
     - name: Confirm that 200 OK response is returned
       uri:
-        url: "http://10.0.2.12"
+        url: "http://{ansible_host}"
         status_code: 200
     
