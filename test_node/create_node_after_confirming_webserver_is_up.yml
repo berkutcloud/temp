@@ -6,7 +6,7 @@
   vars_files: web_app.yml
   
   tasks:
-    - name: Confirm that 200 OK response is returned
+    - name: "Confirm that 200 OK response is returned"
       uri:
         url: "http://{{hostvars[item].ansible_host}}/"
         status_code: 200
