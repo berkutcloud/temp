@@ -7,3 +7,6 @@
       uri:
         url: "http://{{ ansible_host }}/"
         status_code: 200
+      debug:
+        msg:
+        var:
