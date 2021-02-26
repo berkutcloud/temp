@@ -1,6 +1,6 @@
-- hosts: webserver1
+- hosts: webserver
     - name: Confirm that 200 OK response is returned
       uri:
-        url: "http://"
+        url: "http://{{ ansible_host }}/"
         status_code: 200
-    
+      delegate_to: localhost
