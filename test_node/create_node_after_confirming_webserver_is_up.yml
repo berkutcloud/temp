@@ -1,0 +1,33 @@
+---
+- name: BIG-IP SETUP
+  hosts: ltm01
+  connection: local
+  gather_facts: false
+  vars_files: web_app.yml
+  
+  tasks:
+    - name: Confirm that 200 OK response is returned
+      uri:
+        url: "http://{{hostvars[item].ansible_host}}/"
+        status_code: 200
+        loop: "{{ groups['webserver'] }}"
+        register: result
+    
+    - name: Setting up provider values
+      set_fact:
+       provider:
+        server: "{{ansible_host}}"
+        server_port: "443"
+        validate_certs: "False"
+  
+    - name: CREATE NODES
+      bigip_node:
+        host: "{{hostvars[item].ansible_host}}"
+        name: "{{hostvars[item].inventory_hostname}}" 
+        provider: "{{ provider }}"
+        state: present
+        when: result is succeeded
+      loop: "{{ groups['webserver'] }}"
+
+
+  
