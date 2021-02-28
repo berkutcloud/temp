@@ -59,8 +59,9 @@
 
     - name: Config Sync/unicast/mirroring address - BIGIP1
       bigip_device_connectivity:
-        server: "{{bigip1_ip}}"
-        provider: "{{ provider }}"
+       provider:
+          server: "{{bigip1_ip}}"
+          validate_certs: "False"
         config_sync_ip: "{{bigip1_ha_selfip[0]['address']}}"
         mirror_primary_address: "{{bigip1_ha_selfip[0]['address']}}"
         unicast_failover:
@@ -71,8 +72,9 @@
 
     - name: Config Sync/unicast/mirroring address - BIGIP2
       bigip_device_connectivity:
-        server: "{{bigip2_ip}}"
-        provider: "{{ provider }}"
+       provider:
+          server: "{{bigip1_ip}}"
+          validate_certs: "False"
         config_sync_ip: "{{bigip2_ha_selfip[0]['address']}}"
         mirror_primary_address: "{{bigip2_ha_selfip[0]['address']}}"
         unicast_failover:
@@ -83,8 +85,9 @@
 
     - name: Device trust
       bigip_device_trust:
-        server: "{{bigip1_ip}}"
-        provider: "{{ provider }}"
+       provider:
+          server: "{{bigip1_ip}}"
+          validate_certs: "False"
         peer_server: "{{ bigip2_ip }}"
         peer_hostname: "{{ bigip2_hostname }}"
         peer_user: "{{ bigip2_username }}"
@@ -94,8 +97,9 @@
 
     - name: Add Device Group
       bigip_device_group:
-        server: "{{bigip1_ip}}"
-        provider: "{{ provider }}"
+       provider:
+          server: "{{bigip1_ip}}"
+          validate_certs: "False"
         name: "deviceGrp"
         auto_sync: yes
         type: "sync-failover"
@@ -104,8 +108,9 @@
    
     - name: Add members to the device group
       bigip_device_group_member:
-        server: "{{bigip1_ip}}"
-        provider: "{{ provider }}"
+       provider:
+          server: "{{bigip1_ip}}"
+          validate_certs: "False"
         device_group: "deviceGrp"
         name: "{{ item }}"
         validate_certs: False
@@ -116,8 +121,9 @@
    
     - name: Perform a config sync
       bigip_configsync_action:
-        server: "{{bigip1_ip}}"
-        provider: "{{ provider }}"
+       provider:
+          server: "{{bigip1_ip}}"
+          validate_certs: "False"
         device_group: "deviceGrp"
         sync_device_to_group: yes
         validate_certs: False
