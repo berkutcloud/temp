@@ -1,22 +1,22 @@
 ---
 - name: BIG-IP SETUP
-  hosts: ltm01
+  hosts: ltm
   connection: local
   gather_facts: false
   vars_files: web_app.yml
 
   tasks:
-    - name: Setting up provider values
-      set_fact:
-       provider:
-        server: "{{ansible_host}}"
-        server_port: "443"
-        validate_certs: "False"
+ #   - name: Setting up provider values
+ #     set_fact:
+ #      provider:
+ #       server: "{{ansible_host}}"
+ #       server_port: "443"
+ #       validate_certs: "False"
 
     - name: Add HA VLAN(s) on BIG-IP1
       bigip_vlan:
-        server: "{{bigip1_ip}}"
-        provider: "{{ provider }}"
+        provider:
+           server: "{{bigip1_ip}}"
         name: "{{item.name}}"
         tag: "{{item.id}}"
         tagged_interfaces:
