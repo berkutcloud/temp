@@ -17,11 +17,11 @@
       bigip_vlan:
         provider:
            server: "{{bigip1_ip}}"
+           validate_certs: "False"
         name: "{{item.name}}"
         tag: "{{item.id}}"
         tagged_interfaces:
         - "{{item.interface}}"
-        validate_certs: "no"
       with_items: "{{ha_vlan_information}}"
 
     - name: Add HA VLAN on BIG-IP2
