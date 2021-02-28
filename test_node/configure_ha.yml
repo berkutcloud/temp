@@ -24,15 +24,15 @@
         - "{{item.interface}}"
       with_items: "{{ha_vlan_information}}"
 
-    - name: Add HA VLAN on BIG-IP2
+    - name: Add HA VLAN(s) on BIG-IP2
       bigip_vlan:
-        server: "{{bigip2_ip}}"
-        provider: "{{ provider }}"
+        provider:
+           server: "{{bigip2_ip}}"
+           validate_certs: "False"
         name: "{{item.name}}"
         tag: "{{item.id}}"
         tagged_interfaces:
         - "{{item.interface}}"
-        validate_certs: "no"
       with_items: "{{ha_vlan_information}}"
 
     - name: Add HA SELF-IP(s) on BIG-IP1
