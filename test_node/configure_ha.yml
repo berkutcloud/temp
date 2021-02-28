@@ -72,7 +72,7 @@
     - name: Config Sync/unicast/mirroring address - BIGIP2
       bigip_device_connectivity:
         provider:
-          server: "{{bigip1_ip}}"
+          server: "{{bigip2_ip}}"
           validate_certs: "False"
         config_sync_ip: "{{bigip2_ha_selfip[0]['address']}}"
         mirror_primary_address: "{{bigip2_ha_selfip[0]['address']}}"
