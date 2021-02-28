@@ -38,7 +38,9 @@
     - name: Add HA SELF-IP(s) on BIG-IP1
       bigip_selfip:
        server: "{{bigip1_ip}}"
-       provider: "{{ provider }}"
+       provider:
+          server: "{{bigip1_ip}}"
+          validate_certs: "False"
        name: "{{item.name}}"
        address: "{{item.address}}"
        netmask: "{{item.netmask}}"
