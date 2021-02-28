@@ -67,7 +67,6 @@
         unicast_failover:
         - address: "{{bigip1_ha_selfip[0]['address']}}"
         - address: "{{bigip1_ip}}"
-        validate_certs: False
       delegate_to: localhost
 
     - name: Config Sync/unicast/mirroring address - BIGIP2
@@ -80,7 +79,6 @@
         unicast_failover:
         - address: "{{bigip2_ha_selfip[0]['address']}}"
         - address: "{{bigip2_ip}}"
-        validate_certs: False
       delegate_to: localhost
 
     - name: Device trust
@@ -92,7 +90,6 @@
         peer_hostname: "{{ bigip2_hostname }}"
         peer_user: "{{ bigip2_username }}"
         peer_password: "{{ bigip2_password }}"
-        validate_certs: False
       delegate_to: localhost
 
     - name: Add Device Group
@@ -103,7 +100,6 @@
         name: "deviceGrp"
         auto_sync: yes
         type: "sync-failover"
-        validate_certs: False
       delegate_to: localhost
    
     - name: Add members to the device group
@@ -113,7 +109,6 @@
           validate_certs: "False"
         device_group: "deviceGrp"
         name: "{{ item }}"
-        validate_certs: False
       with_items:
         - "{{bigip1_hostname}}"
         - "{{bigip2_hostname}}"
@@ -126,5 +121,4 @@
           validate_certs: "False"
         device_group: "deviceGrp"
         sync_device_to_group: yes
-        validate_certs: False
       delegate_to: localhost
