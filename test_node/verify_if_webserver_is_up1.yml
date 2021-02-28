@@ -1,11 +1,17 @@
 ---
-- hosts: webserver
+- name: create nodes after verifying webserver
   connection: local
-  
   tasks:
     - name: Confirm that 200 OK response is returned
+      hosts: webserver
       uri:
         url: "http://{{ ansible_host }}/"
         status_code: 200
         register: result
-    
+
+
+#- name: BIG-IP SETUP
+#  hosts: ltm01
+#  connection: local
+#  gather_facts: false
+#  vars_files: web_app.yml  

@@ -1,0 +1,5 @@
+---
+tasks:
+  - name: create nodes after verification
+    include_tasks: verify_if_webserver_is_up1.yml
+    loop: "{{ groups['webserver'] }}"
