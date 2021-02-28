@@ -9,3 +9,31 @@ pool_members:
   - ip: 10.0.2.13
     name: "dev02.testnetwork.net"
     port: 80
+
+bigip1_ip: 10.10.10.161
+bigip1_username: "admin"
+bigip1_password: "berkut.cloud"
+
+bigip2_ip: 10.192.10.162
+bigip2_username: "admin"
+bigip2_password: "berkut.cloud"
+
+bigip1_hostname: ltm01.lab.net 
+bigip2_hostname: ltm02.lab.net 
+
+ha_vlan_information:
+- name: "HA_VLAN"
+  id: "40"
+  interface: "1.3"
+
+bigip1_ha_selfip: 
+- name: "HA_SELF-IP"
+  address: "10.0.3.1"
+  netmask: "255.255.255.0"
+  vlan: "{{ha_vlan_information[0]['name']}}"
+
+bigip2_ha_selfip:
+- name: "HA_SELF-IP"
+  address: "10.0.3.2"
+  netmask: "255.255.255.0"
+  vlan: "{{ha_vlan_information[0]['name']}}"
