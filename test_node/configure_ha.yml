@@ -59,7 +59,7 @@
 
     - name: Config Sync/unicast/mirroring address - BIGIP1
       bigip_device_connectivity:
-       provider:
+        provider:
           server: "{{bigip1_ip}}"
           validate_certs: "False"
         config_sync_ip: "{{bigip1_ha_selfip[0]['address']}}"
@@ -72,7 +72,7 @@
 
     - name: Config Sync/unicast/mirroring address - BIGIP2
       bigip_device_connectivity:
-       provider:
+        provider:
           server: "{{bigip1_ip}}"
           validate_certs: "False"
         config_sync_ip: "{{bigip2_ha_selfip[0]['address']}}"
@@ -85,7 +85,7 @@
 
     - name: Device trust
       bigip_device_trust:
-       provider:
+        provider:
           server: "{{bigip1_ip}}"
           validate_certs: "False"
         peer_server: "{{ bigip2_ip }}"
@@ -97,7 +97,7 @@
 
     - name: Add Device Group
       bigip_device_group:
-       provider:
+        provider:
           server: "{{bigip1_ip}}"
           validate_certs: "False"
         name: "deviceGrp"
@@ -108,7 +108,7 @@
    
     - name: Add members to the device group
       bigip_device_group_member:
-       provider:
+        provider:
           server: "{{bigip1_ip}}"
           validate_certs: "False"
         device_group: "deviceGrp"
@@ -121,7 +121,7 @@
    
     - name: Perform a config sync
       bigip_configsync_action:
-       provider:
+        provider:
           server: "{{bigip1_ip}}"
           validate_certs: "False"
         device_group: "deviceGrp"
