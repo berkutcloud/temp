@@ -27,13 +27,13 @@ ha_vlan_information:
   interface: "1.3"
 
 bigip1_ha_selfip: 
-- name: "HA_SELF-IP"
-  address: "10.0.3.1"
-  netmask: "255.255.255.0"
-  vlan: "{{ha_vlan_information[0]['name']}}"
+ - name: "HA_SELF-IP"
+   address: "10.0.3.1"
+   netmask: "255.255.255.0"
+   vlan: "{{ha_vlan_information[0]['name']}}"
 
 bigip2_ha_selfip:
-- name: "HA_SELF-IP"
-  address: "10.0.3.3"
-  netmask: "255.255.255.0"
-  vlan: "{{ha_vlan_information[0]['name']}}"
+ - name: "HA_SELF-IP"
+   address: "10.0.3.3"
+   netmask: "255.255.255.0"
+   vlan: "{{ha_vlan_information[0]['name']}}"
