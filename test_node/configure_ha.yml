@@ -37,7 +37,6 @@
 
     - name: Add HA SELF-IP(s) on BIG-IP1
       bigip_selfip:
-       server: "{{bigip1_ip}}"
        provider:
           server: "{{bigip1_ip}}"
           validate_certs: "False"
@@ -45,18 +44,17 @@
        address: "{{item.address}}"
        netmask: "{{item.netmask}}"
        vlan: "{{item.vlan}}"
-       validate_certs: "no"
       with_items: "{{ bigip1_ha_selfip }}"
 
     - name: Add HA SELF-IP(s) on BIG-IP2
       bigip_selfip:
-       server: "{{bigip2_ip}}"
-       provider: "{{ provider }}"
+       provider:
+          server: "{{bigip1_ip}}"
+          validate_certs: "False"
        name: "{{item.name}}"
        address: "{{item.address}}"
        netmask: "{{item.netmask}}"
        vlan: "{{item.vlan}}"
-       validate_certs: "no"
       with_items: "{{ bigip2_ha_selfip }}"
 
     - name: Config Sync/unicast/mirroring address - BIGIP1
