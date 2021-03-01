@@ -15,11 +15,11 @@
   
     - name: CREATE NODES
       bigip_node:
-        host: "{{hostvars[item].ansible_host}}"
-        name: "{{hostvars[item].inventory_hostname}}" 
+        host: "{{ item.ip }}"
+        name: "{{ item.name }}" 
         provider: "{{ provider }}"
         state: present
-      loop: "{{ groups['webserver'] }}"
+      loop: "{{ pool_members }}"
 
 
   
