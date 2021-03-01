@@ -22,10 +22,6 @@
         description: "VIP for {{ website }}"
         profiles:
           - http
-          - name: clientssl
-            context: client-side
-          - name: serverssl
-            context: server-side
         state: present
         provider: "{{ provider }}"
       tags: vip
