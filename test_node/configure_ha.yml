@@ -6,12 +6,6 @@
   vars_files: web_app.yml
 
   tasks:
- #   - name: Setting up provider values
- #     set_fact:
- #      provider:
- #       server: "{{ansible_host}}"
- #       server_port: "443"
- #       validate_certs: "False"
 
     - name: Add HA VLAN(s) on BIG-IP1
       bigip_vlan:
